@@ -4,6 +4,8 @@ from datetime import timezone
 
 
 def alerts(request):
+    """Renders the alerts page showing ALL alerts
+    """
     patients = Patient.objects.all()
     data = []
 
@@ -17,6 +19,8 @@ def alerts(request):
 
 
 def critical(request):
+    """Renders the alerts page showing ONLY CRITICAL alerts
+    """
     patients = Patient.objects.all()
     data = []
 
@@ -30,6 +34,8 @@ def critical(request):
 
 
 def patient(request, id):
+    """Renders the alerts page showing alerts for a particular patient
+    """
     patient = Patient.objects.get(id=id)
     data = []
 
@@ -42,5 +48,7 @@ def patient(request, id):
 
 
 def clear(request):
+    """Deletes all alerts from the database
+    """
     Alert.objects.all().delete()
     return redirect('alerts')
